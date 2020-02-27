@@ -1,0 +1,81 @@
+{% extends "index.html "%}
+{% load template_filters %}
+{% block content%}
+{%include 'products/navbar.html'%}
+{%include 'products/result.html'%}
+   <!-- thumbnail code-->
+    <div class="cat-container" >
+  <div class="row">
+    <div class="col-xs-18 ">
+      <div class="products wrapper grid products-grid">
+        <ol class="products list items product-items">
+          {% for document in documents%}
+          <li class="item product product-item">
+            <div class="product-item-info" data-container="product-grid">
+              <a class="product photo product-item-photo" href="{{ document|get_item:'prod_page' }}" tabindex="-1">
+                <span class="product-image-container">
+                  <span class="product-image-wrapper">
+                    <span>
+                      <span class="product-image-container">
+                        <span class="product-image-wrapper">
+                          <img class="product-image-photo"src="data:image/png;base64,{{ document|get_item:'Binary' }}
+
+" alt="{{ document|get_item:'title' }}">
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </a>
+              <div class="product details product-item-details">
+                <div class="info-holder">
+                  <strong class="product name product-item-name">
+                    <a class="product-item-link" href="{{ document|get_item:'prod_page' }}">
+                      {{ document|get_item:'title' }} 
+                    </a>
+                  </strong>
+                </div>
+                <div class="info-holder">
+                  <strong class="price-box price-final_price">
+                    <a class="action tocart primary" href="/search/?search={{document|get_item:'Brand'}}">
+                      {{ document|get_item:'Brand' }} 
+                    </a>
+                  </strong>
+                </div>
+                <div class="info-holder">
+                  <div class="price-box price-final_price" data-role="priceBox" >
+                    <span class="price-container price-final_price tax weee">
+                      <span id="product-price" class="price-wrapper " data-price-type="finalPrice">
+                        <span class="price">PKR{{ document|get_item:'Price' }}</span>
+                      </span>
+                    </span>
+                  </div>
+                  <div class="product-item-inner">
+                    <div class="product actions product-item-actions">
+                      <div class="actions-primary">
+                      <a class="action tocart primary" href="{{ document|get_item:'prod_page' }}"> 
+                        <span>Shop Now</span>
+                      </a> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- End row -->
+     </div><!-- End container -->
+
+      {%include 'products/pagination.html'%}      
+      {%include 'products/footer.html'%}
+      {%include 'products/javascript.html'%}
+
+     {% endblock %}

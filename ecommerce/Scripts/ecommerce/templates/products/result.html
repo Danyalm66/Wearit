@@ -1,0 +1,26 @@
+
+<div class="result-description" >
+	<div class="top-banner">
+<div class="banner-wrap max-width">
+<h1>{{ searched }} Related Products in Pakistani Brands</h1>
+<div class="rwd-sort-filters">
+<a class="btn-filters notification" href="#" data-toggle="modal" data-target="#rwdFilters" id="myBtn">
+<i class="fa fa-sliders"></i> Filters
+<span class="badge filter-applied-count" style="visibility:hidden;">0</span>
+</a>
+
+</div>
+
+</div>
+</div>
+
+<div class="description">
+	<span class="count"> {{ Total_products }} 
+</span>
+<span class="detail"> total products from </span>
+<span class="count">{{ count_brands }}  </span>
+<span  class="detail">local brands. Price range is </span><span class="count" id="minprice">PKR {{ min_price }} </span ><span class="detail">to </span><span class="count" id='maxprice'>PKR {{ max_price }}</span><span class="detail">.</span>
+
+</div>
+</div>
+{% include 'products/filter.html' %}

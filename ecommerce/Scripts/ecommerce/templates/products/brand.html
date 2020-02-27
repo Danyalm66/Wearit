@@ -1,0 +1,23 @@
+
+<form class="form-inline navbar-search-form disabled ml-auto" action='{% url "search-query" %}' method='GET'>
+    <div class="dropdown" id='myDropdown'>
+        <input type="search" name="search" placeholder="Search by brand name" aria-label="Search" id="myInput" onkeyup="filterFunction()" class="search form-control" autocomplete="off">
+
+        <div class="dropdown-content">
+            {% for brand in brands%}
+            <li onclick="getPaging(this)">{{ brand}}</li>
+            {%endfor%}
+
+        </div>
+    </div>
+
+</form>
+<ul class="navbar-nav navbar-search-button" required>
+    <li class="nav-item">
+
+        <a class="nav-link search-button" href="#">
+            <i class="fas fa-search" onclick="category()"></i></a>
+
+    </li>
+
+</ul>

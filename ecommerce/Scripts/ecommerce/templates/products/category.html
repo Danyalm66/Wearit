@@ -1,0 +1,39 @@
+<ul class="navbar-nav ml-auto navbar-menu-items fadeIn animated">
+
+    <!--Dropdown primary-->
+    <label id="img_category_label" class="field" for="img_category" data-value="">
+        <input id='categoryname' class="cat-input" type="text" value='' name="category-selected" style="display: none;" autocomplete="off" required="" />
+        <span class="compulsory">Category</span>
+        <div id="img_category" class="psuedo_select" name="img_category">
+            <span class="selected" id="on-change"></span>
+
+            <ul id="img_category_options" class="options">
+                {% for cat in categories %}
+                <li class="option" data-value="{{ cat }}">{{ cat }}</li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </label>
+
+    <!--Range-->
+
+    <li class="nav-item">
+        <span class="text">Price:  </span>
+
+    </li>
+    <li class="nav-item">
+        <input type='text' class="initial-price" onkeypress="return isNumber(event)" placeholder="PKR" autocomplete="off" name='min-price'></input>
+    </li>
+    <li class="nav-item">
+        <span class="text">To:  </span>
+
+    </li>
+    <li class="nav-item">
+        <input type='text' class="initial-price" onkeypress="return isNumber(event)" placeholder="PKR" autocomplete="off" name='max-price'></input>
+    </li>
+    <li class="nav-item">
+        <button class="button button5" id="django-button" onclick="myFunction()">FIND</button>
+    </li>
+
+</ul>

@@ -1,0 +1,23 @@
+{% extends "index.html "%}
+{% load staticfiles %}
+{% block content%}
+{%include 'products/navbar.html'%}
+
+<div class="top-banner" style="padding-top: 8px;
+
+position: relative;
+
+font-family: 'Lato', Helvetica, sans-serif;
+
+text-transform: capitalize;
+
+margin-top: 113px;">
+<div class="banner-wrap max-width">
+<h1>No Resutls For Searched Item</h1>
+</div>
+</div>
+<div class="inner-content max-width">
+<p><img src="{% static 'img/uhoh-3.png' %}" alt="Page Not Found"></p>
+</div>
+{%include 'products/footer.html'%}
+     {% endblock %}

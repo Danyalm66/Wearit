@@ -1,0 +1,45 @@
+{% load template_filters %}
+<div style="display: inline-flex;margin-bottom: 64px;">
+ <nav aria-label="...">
+  <ul class="pagination">
+  	{% if documents.has_previous %}
+  	<li class="page-item">
+    	<a class="page-link" href="?{% url_replace request 'page' 1 %}">
+      		<i class="fas fa-angle-double-left"></i>
+      	</a>
+    </li>
+    <li class="page-item">
+    	<a class="page-link" href="?{% url_replace request 'page' documents.previous_page_number %}">
+      		Previous
+      	</a>
+    </li>
+    {% else %}
+    	<li class="page-item disabled"><span class="page-link">Previous</span></li>
+    {% endif %}
+	{% for num in documents.paginator.page_range %}
+    
+    {% if documents.number == num%}
+	    <li class="page-item active">
+	      <span class="page-link">
+	        {{num}}
+	        <span class="sr-only">(current)</span>
+	      </span>
+	    </li>
+	{% elif num > documents.number|add:'-3' and num < documents.number|add:'3' %}
+		<li class="page-item"><a class="page-link" href="?{% url_replace request 'page' num %}">{{num}}</a></li>
+	{% endif %}
+	{% endfor %}
+	{% if documents.has_next %}
+	    <li class="page-item">
+	      <a class="page-link" href="?{% url_replace request 'page' documents.next_page_number %}">Next</a>
+	    </li>
+	    <li class="page-item">
+    	<a class="page-link" href="?{% url_replace request 'page' documents.paginator.num_pages %}"><i class="fas fa-angle-double-right"></i>
+      	</a>
+    </li>
+    {% else %}
+    	<li class="page-item disabled"><span class="page-link">Next</span></li>
+	{% endif %}
+  </ul>
+</nav>
+</div>
